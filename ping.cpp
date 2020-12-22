@@ -26,7 +26,7 @@ QString Ping::operatingSystem(){
 }
 
 QString Ping::getAddress() const{
-
+    return m_address;
 }
 
 void Ping::setAddress(const QString &address){
@@ -51,7 +51,7 @@ void Ping::startPing(){
 
     QByteArray command;
     command.append("ping " + m_address);
-    if(QSysInfo::productType() == "windows") command.append("\r");
+    //if(QSysInfo::productType() == "windows") command.append("\r");
     command.append("\n");
     m_process.write(command);
 
@@ -81,7 +81,8 @@ void Ping::readyReadStdErr(){
 
     if(!m_listening) return;
     qInfo() << Q_FUNC_INFO;
-    QByteArray data = m_process.readAllStandardError();
+    //Do I need this?
+    //QByteArray data = m_process.readAllStandardError();
     QString message = "Standard Error: ";
     message.append(m_process.readAllStandardError());
     emit output(message);
