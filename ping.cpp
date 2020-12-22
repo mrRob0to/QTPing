@@ -130,6 +130,7 @@ void Ping::stateChanged(QProcess::ProcessState newState){
 
     qInfo() << Q_FUNC_INFO;
     switch(newState){
+
         case QProcess::NotRunning:
             emit output("Not running");
             break;
