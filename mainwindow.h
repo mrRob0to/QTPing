@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "ping.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +16,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void output(QString data);
+
+
+    void on_txtIP_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
+    Ping m_ping;
 };
 #endif // MAINWINDOW_H

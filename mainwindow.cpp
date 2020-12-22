@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->lblOS->setText("OS Detected: " + m_ping.operatingSystem());
 }
 
 MainWindow::~MainWindow()
@@ -13,3 +14,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::output(QString data)
+{
+
+}
+
+
+void MainWindow::on_txtIP_textChanged(const QString &arg1)
+{
+
+}
