@@ -18,8 +18,6 @@ public:
 
 private slots:
     void output(QString data);
-
-
     void on_txtIP_textChanged(const QString &arg1);
 
 private:
