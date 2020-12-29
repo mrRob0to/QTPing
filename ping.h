@@ -12,7 +12,7 @@ class Ping : public QObject
 public:
     explicit Ping(QObject *parent = nullptr);
 
-    QString operatingSystem();
+    //QString operatingSystem();
     QString getAddress() const;
     void setAddress(const QString &address);
 

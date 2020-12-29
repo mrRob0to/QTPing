@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "ping.h"
+#include "operatingsystem.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,5 +24,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Ping m_ping;
+    OperatingSystem m_OperatingSystem;
 };
 #endif // MAINWINDOW_H

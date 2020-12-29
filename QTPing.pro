@@ -11,10 +11,12 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    operatingsystem.cpp \
     ping.cpp
 
 HEADERS += \
     mainwindow.h \
+    operatingsystem.h \
     ping.h
 
 FORMS += \

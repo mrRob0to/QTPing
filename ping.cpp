@@ -19,11 +19,11 @@ Ping::Ping(QObject *parent) : QObject(parent)
 }
 
 //Public
-QString Ping::operatingSystem(){
+//QString Ping::operatingSystem(){
 
-    return QSysInfo::prettyProductName();
+//    return QSysInfo::prettyProductName();
 
-}
+//}
 
 QString Ping::getAddress() const{
     return m_address;
