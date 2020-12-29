@@ -7,10 +7,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->lblOS->setText("OS Detected: " + m_OperatingSystem.getOS());
-    m_ping.setAddress(ui->txtIP->text());
-    connect(ui->btnStart, &QPushButton::clicked, &m_ping, &Ping::start);
-    connect(ui->btnStop, &QPushButton::clicked, &m_ping, &Ping::stop);
-    connect(&m_ping, &Ping::output, this, &MainWindow::output);
+    m_Ping.setAddress(ui->txtIP->text());
+    connect(ui->btnStart, &QPushButton::clicked, &m_Ping, &Ping::start);
+    connect(ui->btnStop, &QPushButton::clicked, &m_Ping, &Ping::stop);
+    connect(&m_Ping, &Ping::output, this, &MainWindow::output);
 }
 
 MainWindow::~MainWindow()
@@ -27,5 +27,5 @@ void MainWindow::output(QString data)
 void MainWindow::on_txtIP_textChanged(const QString &arg1)
 {
     Q_UNUSED(arg1);
-    m_ping.setAddress(ui->txtIP->text());
+    m_Ping.setAddress(ui->txtIP->text());
 }

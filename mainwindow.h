@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Ping m_ping;
+    Ping m_Ping;
     OperatingSystem m_OperatingSystem;
 };
 #endif // MAINWINDOW_H
