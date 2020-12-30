@@ -12,14 +12,12 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     operatingsystem.cpp \
-    ping.cpp \
-    utilities.cpp
+    ping.cpp
 
 HEADERS += \
     mainwindow.h \
     operatingsystem.h \
-    ping.h \
-    utilities.h
+    ping.h
 
 FORMS += \
     mainwindow.ui

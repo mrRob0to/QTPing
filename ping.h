@@ -11,8 +11,6 @@ class Ping : public QObject
     Q_OBJECT
 public:
     explicit Ping(QObject *parent = nullptr);
-
-    //QString operatingSystem();
     QString getAddress() const;
     void setAddress(const QString &address);
 
@@ -38,8 +36,6 @@ private:
     bool m_listening;
     QString getProcess();
     void startPing();
-
-
 };
 
 #endif // PING_H
