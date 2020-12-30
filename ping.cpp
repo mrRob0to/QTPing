@@ -15,70 +15,52 @@ Ping::Ping(QObject *parent) : QObject(parent)
 
     m_listening = false;
     m_address ="";
-
 }
 
-//Public
-QString Ping::operatingSystem(){
-
-    return QSysInfo::prettyProductName();
-
-}
 
 QString Ping::getAddress() const{
     return m_address;
 }
 
 void Ping::setAddress(const QString &address){
-
     m_address = address;
-
 }
 
 
 //Private
 QString Ping::getProcess(){
-
     qInfo() << Q_FUNC_INFO;
     if(QSysInfo::productType() == "windows") return "cmd";
     if(QSysInfo::productType() == "osx") return "/bin/zsh";
 
     return "bash";
-
 }
 
 void Ping::startPing(){
-
     QByteArray command;
     command.append("ping " + m_address);
-    //if(QSysInfo::productType() == "windows") command.append("\r");
+    if(QSysInfo::productType() == "windows") command.append("\r");
     command.append("\n");
     m_process.write(command);
-
 }
 
 
 //Public Slots
 void Ping::start(){
-
     qInfo() << Q_FUNC_INFO;
     m_listening = true;
     m_process.start(getProcess());
-
 }
 
 void Ping::stop(){
-
     qInfo() <<Q_FUNC_INFO;
     m_listening = false;
     m_process.close();
-
 }
 
 
 //Private Slots
 void Ping::readyReadStdErr(){
-
     if(!m_listening) return;
     qInfo() << Q_FUNC_INFO;
     //Do I need this?
@@ -86,7 +68,6 @@ void Ping::readyReadStdErr(){
     QString message = "Standard Error: ";
     message.append(m_process.readAllStandardError());
     emit output(message);
-
 }
 
 void Ping::readyReadStdOut(){
@@ -94,44 +75,34 @@ void Ping::readyReadStdOut(){
 }
 
 void Ping::started(){
-
     qInfo() << Q_FUNC_INFO;
-
 }
 
 void Ping::readyRead(){
-
     if(!m_listening) return;
     qInfo() << Q_FUNC_INFO;
     QByteArray data = m_process.readAll().trimmed();
     qInfo() << data;
     emit output(data);
-
 }
 
 void Ping::errorOccurred(QProcess::ProcessError error){
-
     if(!m_listening) return;
     qInfo() << Q_FUNC_INFO << error;
     emit output("Error");
-
 }
 
 void Ping::finished(int exitCode, QProcess::ExitStatus exitStatus){
-
     if(!m_listening) return;
     qInfo() << Q_FUNC_INFO;
     Q_UNUSED(exitCode);
     Q_UNUSED(exitStatus);
     emit output("Complete");
-
 }
 
 void Ping::stateChanged(QProcess::ProcessState newState){
-
     qInfo() << Q_FUNC_INFO;
     switch(newState){
-
         case QProcess::NotRunning:
             emit output("Not running");
             break;
@@ -142,6 +113,5 @@ void Ping::stateChanged(QProcess::ProcessState newState){
             emit output("Running");
             startPing();
             break;
-
         }
 }
